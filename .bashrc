@@ -133,3 +133,6 @@ DEV_DIR="$HOME/dev"
 cdd() {
   cd "$DEV_DIR/$1"
 }
+
+if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
+[[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
