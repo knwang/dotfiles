@@ -31,6 +31,8 @@ bind '"\C-q": "%-\n"'
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+homebrew=/usr/local/bin:/usr/local/sbin
+export PATH=$homebrew:$PATH
 
 export CC=/usr/local/bin/gcc-4.2
 
