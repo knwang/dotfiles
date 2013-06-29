@@ -35,3 +35,5 @@
     tool = vimdiff
 [core]
 	excludesfile = /Users/kevin/.gitignore_global
+[push]
+	default = simple
