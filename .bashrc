@@ -121,7 +121,11 @@ alias gra='git rebase --abort'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias vi='vim'
 alias ll='ls -l'
+
 alias r='rails'
+alias g='git'
+alias h='heroku'
+alias m='mvim'
 
 bettervim="/Applications/MacVim.app/Contents/MacOS/Vim"
 [ -f "$bettervim" ] && alias vim="$bettervim"
