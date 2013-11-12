@@ -68,18 +68,6 @@ augroup vimrc
   autocmd GuiEnter * set columns=120 lines=70 number
 augroup END
 
-let mapleader = ","
-vmap D y'>p
-imap <c-l> <space>=><space>
-imap <c-c> <esc>
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-nnoremap Y y$
-
-
 function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'), 'file')
@@ -106,3 +94,19 @@ au BufWritePost .vimrc so ~/.vimrc
 autocmd QuickFixCmdPost *grep* cwindow
 
 colorscheme railscasts
+
+let mapleader = ","
+vmap D y'>p
+imap <c-l> <space>=><space>
+imap <c-c> <esc>
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+map Q <Nop>
+map K <Nop>
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+nnoremap Y y$
+
+" rails
+map <Leader>sc :sp db/schema.rb<cr>
