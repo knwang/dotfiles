@@ -125,6 +125,8 @@ alias ll='ls -l'
 alias r='rails'
 alias g='git'
 alias h='heroku'
+alias hc='heroku run console -a'
+alias hlog='heroku logs -t -a'
 alias m='mvim'
 
 bettervim="/Applications/MacVim.app/Contents/MacOS/Vim"
