@@ -93,7 +93,7 @@ endfunction
 au BufWritePost .vimrc so ~/.vimrc
 autocmd QuickFixCmdPost *grep* cwindow
 
-colorscheme railscasts
+colorscheme vividchalk
 
 let mapleader = ","
 vmap D y'>p
