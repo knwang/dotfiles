@@ -129,10 +129,6 @@ alias hc='heroku run console -a'
 alias hlog='heroku logs -t -a'
 alias m='mvim'
 
-bettervim="/Applications/MacVim.app/Contents/MacOS/Vim"
-[ -f "$bettervim" ] && alias vim="$bettervim"
-[ -f "$HOME$bettervim" ] && alias vim="$HOME$bettervim"
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
