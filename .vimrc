@@ -12,6 +12,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-endwise'
@@ -62,6 +63,9 @@ set nofoldenable
 set ignorecase smartcase
 set autoindent
 set backspace=indent,eol,start
+set list
+
+iabbrev bpry require 'pry'; binding.pry;
 
 augroup vimrc
   autocmd!
@@ -79,21 +83,10 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-function! PromoteToLet()
-  :normal! dd
-  " :exec '?^\s*it\>'
-  :normal! P
-  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
-  :normal ==
-endfunction
-:command! PromoteToLet :call PromoteToLet()
-:map <leader>p :PromoteToLet<cr>
-
-
 au BufWritePost .vimrc so ~/.vimrc
 autocmd QuickFixCmdPost *grep* cwindow
 
-colorscheme vividchalk
+colorscheme railscasts
 
 let mapleader = ","
 vmap D y'>p
