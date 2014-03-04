@@ -137,3 +137,4 @@ DEV_DIR="$HOME/dev"
 cdd() {
   cd "$DEV_DIR/$1"
 }
+eval "$(rbenv init -)"
