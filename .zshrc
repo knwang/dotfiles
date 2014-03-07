@@ -1,22 +1,15 @@
 ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="knwang"
-
-plugins=(git bundler brew osx vagrant wd gem)
-
+plugins=(git brew osx vagrant wd gem)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+homebrew=/usr/local/bin:/usr/local/sbin
+export PATH=$homebrew:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim -v'
-fi
+EDITOR='vim'
 
 alias gaa='git add --all'
 alias gap='git add -p'
@@ -49,3 +42,6 @@ alias m='mvim'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
