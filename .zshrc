@@ -42,6 +42,11 @@ alias hc='heroku run console -a'
 alias hlog='heroku logs -t -a'
 alias m='mvim'
 
+mux() {
+  cd ~/dev/$1
+  tmux new -A -s $1
+}
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
