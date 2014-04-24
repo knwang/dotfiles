@@ -51,4 +51,5 @@ mux() {
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export BUNDLER_EDITOR="vim"
 eval "$(rbenv init -)"
