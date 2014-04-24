@@ -34,6 +34,8 @@ alias vi='vim'
 alias ll='ls -l'
 
 alias r='rails'
+alias rs='bundle exec rspec'
+alias rspec='bundle exec rspec'
 alias g='git'
 alias h='heroku'
 alias hc='heroku run console -a'
