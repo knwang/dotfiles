@@ -42,6 +42,7 @@ Bundle 'vim-scripts/ZoomWin'
 Bundle 'duff/vim-bufonly'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mattn/gist-vim'
+Bundle 'bling/vim-airline'
 
 syntax on
 filetype plugin indent on
