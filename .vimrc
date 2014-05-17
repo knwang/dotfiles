@@ -101,6 +101,7 @@ map Q <Nop>
 map K <Nop>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap Y y$
+xnoremap p pgvy
 
 " rails
 map <Leader>sc :sp db/schema.rb<cr>
