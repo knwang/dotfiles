@@ -31,11 +31,12 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias vi='vim'
+alias vim='mvim -v'
 alias ll='ls -l'
 
 alias r='rails'
-alias rs='bundle exec rspec'
-alias rspec='bundle exec rspec'
+alias rs='bin/rspec'
+alias rspec='bin/rspec'
 alias g='git'
 alias h='heroku'
 alias hc='heroku run console -a'
@@ -53,3 +54,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export BUNDLER_EDITOR="vim"
 eval "$(rbenv init -)"
+
+if [ -f ~/.zshrc.local ]; then
+      . ~/.zshrc.local
+fi
