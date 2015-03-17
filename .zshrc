@@ -36,7 +36,6 @@ alias ll='ls -l'
 
 alias r='rails'
 alias rs='bin/rspec'
-alias rspec='bin/rspec'
 alias g='git'
 alias h='heroku'
 alias hc='heroku run console -a'
@@ -44,17 +43,36 @@ alias hlog='heroku logs -t -a'
 alias m='mvim'
 
 mux() {
-  cd ~/dev/$1
-  tmux new -A -s $1
+  if [ ! -z $1 ]
+  then
+    cd ~/dev/$1
+    tmux new -A -s $1
+  else
+    tmux new -A -s $(pwd)
+  fi
 }
+
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
 export BUNDLER_EDITOR="vim"
 eval "$(rbenv init -)"
 
+function title {
+  if [[ "$DISABLE_AUTO_TITLE" == "true" ]] || [[ "$EMACS" == *term* ]]; then
+    return
+  fi
+  if [[ "$TERM" == screen* ]]; then
+    print -Pn "\ek$1:q\e\\" #set screen hardstatus, usually truncated at 20 chars
+  elif [[ "$TERM" == xterm* ]] || [[ $TERM == rxvt* ]] || [[ $TERM == ansi ]] || [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
+    print -Pn "\e]1;$1:q\a" #set window name
+    print -Pn "\e]1;$1:q\a" #set icon (=tab) name
+  fi
+}
+
 if [ -f ~/.zshrc.local ]; then
-      . ~/.zshrc.local
+  . ~/.zshrc.local
 fi

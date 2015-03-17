@@ -11,7 +11,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-ragtag'
@@ -20,11 +19,14 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-eunuch'
+Bundle 'othree/html5.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'jgdavey/vim-blockle'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
+Bundle 'mattn/emmet-vim'
 
 Bundle 'jgdavey/vim-turbux'
 Bundle 'skalnik/vim-vroom'
@@ -33,15 +35,16 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'jgdavey/vim-railscasts'
 
 Bundle 'mileszs/ack.vim'
-Bundle 'ggreer/the_silver_searcher'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'duff/vim-bufonly'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mattn/gist-vim'
 Bundle 'bling/vim-airline'
+Bundle 'christoomey/vim-run-interactive'
+Bundle 'pbrisbin/vim-mkdir'
+Bundle 'vim-scripts/ctags.vim'
 
 syntax on
 filetype plugin indent on
@@ -65,6 +68,8 @@ set autoindent
 set backspace=indent,eol,start
 set list
 
+set diffopt+=vertical
+
 iabbrev bpry require 'pry'; binding.pry;
 
 augroup vimrc
@@ -82,6 +87,20 @@ function! RenameFile()
   endif
 endfunction
 map <leader>n :call RenameFile()<cr>
+
+" stole from http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
 au BufWritePost .vimrc so ~/.vimrc
 autocmd QuickFixCmdPost *grep* cwindow
@@ -104,3 +123,61 @@ xnoremap p pgvy
 
 " rails
 map <Leader>sc :sp db/schema.rb<cr>
+
+if !exists('g:rails_gem_projections')
+  let g:rails_gem_projections = {}
+endif
+
+call extend(g:rails_gem_projections, {
+      \ "active_model_serializers": {
+      \   "app/serializers/*_serializer.rb": {
+      \     "command": "serializer",
+      \     "template": "class %SSerializer < ActiveModel::Serializer\nend",
+      \     "affinity": "model"}},
+      \ "rspec": {
+      \    "spec/support/*.rb": {
+      \      "command": "support"}},
+      \ "cucumber": {
+      \   "features/*.feature": {
+      \     "command": "feature",
+      \     "template": "Feature: %h"},
+      \   "features/support/*.rb": {
+      \     "command": "support"},
+      \   "features/support/env.rb": {
+      \     "command": "support"},
+      \   "features/step_definitions/*_steps.rb": {
+      \     "command": "steps"}},
+      \ "carrierwave": {
+      \   "app/uploaders/*_uploader.rb": {
+      \     "command": "uploader",
+      \     "template": "class %SUploader < CarrierWave::Uploader::Base\nend"}},
+      \ "draper": {
+      \   "app/decorators/*_decorator.rb": {
+      \     "command": "decorator",
+      \     "affinity": "model",
+      \     "template": "class %SDecorator < ApplicationDecorator\nend"}},
+      \ "fabrication": {
+      \   "spec/fabricators/*_fabricator.rb": {
+      \     "command": ["fabricator", "factory"],
+      \     "alternate": "app/models/%s.rb",
+      \     "related": "db/schema.rb#%p",
+      \     "test": "spec/models/%s_spec.rb",
+      \     "template": "Fabricator :%s do\nend",
+      \     "affinity": "model"}},
+      \ "factory_girl": {
+      \   "spec/factories/*_factory.rb": {
+      \     "command": "factory",
+      \     "alternate": "app/models/%s.rb",
+      \     "related": "db/schema.rb#%p",
+      \     "test": "spec/models/%s_spec.rb",
+      \     "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend",
+      \     "affinity": "model"},
+      \   "spec/factories.rb": {
+      \      "command": "factory"},
+      \   "test/factories.rb": {
+      \      "command": "factory"}}
+      \ }, 'keep')
+
+" Enable TAB indent and SHIFT-TAB unindent
+vnoremap <silent> <TAB> >gv
+vnoremap <silent> <S-TAB> <gv
