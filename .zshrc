@@ -40,7 +40,7 @@ alias g='git'
 alias h='heroku'
 alias hc='heroku run console -a'
 alias hlog='heroku logs -t -a'
-alias m='mvim'
+alias m='middleman'
 
 mux() {
   if [ ! -z $1 ]
@@ -48,7 +48,7 @@ mux() {
     cd ~/dev/$1
     tmux new -A -s $1
   else
-    tmux new -A -s $(pwd)
+    tmux new -A -s `basename $(pwd)`
   fi
 }
 
