@@ -1,0 +1,137 @@
+AllCops:
+  Include:
+  - "**/*.rake"
+  - "**/Gemfile"
+  - "**/Rakefile"
+  Exclude:
+  - "vendor/**/*"
+  - "db/**/*"
+  RunRailsCops: true
+  DisplayCopNames: false
+  StyleGuideCopsOnly: false
+
+Style/BlockComments:
+  Description: 'Do not use block comments.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-block-comments'
+  Enabled: false
+Style/GuardClause:
+  Description: Check for conditionals that can be replaced with guard clauses
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-nested-conditionals
+  Enabled: false
+  MinBodyLength: 1
+Style/HashSyntax:
+  Description: 'Prefer Ruby 1.9 hash syntax { a: 1, b: 2 } over 1.8 syntax { :a =>
+    1, :b => 2 }.'
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#hash-literals
+  Enabled: true
+  EnforcedStyle: ruby19
+  SupportedStyles:
+  - ruby19
+  - hash_rockets
+Style/IfUnlessModifier:
+  Description: Favor modifier if/unless usage when you have a single-line body.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#if-as-a-modifier
+  Enabled: false
+  MaxLineLength: 80
+Style/NumericLiterals:
+  Description: Add underscores to large numeric literals to improve their readability.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscores-in-numerics
+  Enabled: false
+  MinDigits: 5
+Style/SingleLineBlockParams:
+  Description: Enforces the names of some block params.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#reduce-blocks
+  Enabled: false
+  Methods:
+  - reduce:
+    - a
+    - e
+  - inject:
+    - a
+    - e
+Style/SingleLineMethods:
+  Description: Avoid single-line methods.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-single-line-methods
+  Enabled: false
+  AllowIfMethodIsEmpty: true
+Style/StringLiterals:
+  Description: Checks if uses of quotes match the configured preference.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-string-literals
+  Enabled: false
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+  - single_quotes
+  - double_quotes
+Style/WhileUntilModifier:
+  Description: Favor modifier while/until usage when you have a single-line body.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#while-as-a-modifier
+  Enabled: false
+  MaxLineLength: 80
+Style/WordArray:
+  Description: Use %w or %W for arrays of words.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-w
+  Enabled: false
+  MinSize: 0
+  WordRegex: !ruby/regexp /\A[\p{Word}]+\z/
+Metrics/AbcSize:
+  Description: A calculated magnitude based on number of assignments, branches, and
+    conditions.
+  Enabled: true
+  Max: 18
+Metrics/ClassLength:
+  Description: Avoid classes longer than 100 lines of code.
+  Enabled: false
+  CountComments: false
+  Max: 100
+Metrics/LineLength:
+  Description: Limit lines to 80 characters.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#80-character-limits
+  Enabled: false
+  Max: 80
+  AllowURI: true
+  URISchemes:
+  - http
+  - https
+Style/InlineComment:
+  Description: Avoid inline comments.
+  Enabled: false
+Style/SymbolArray:
+  Description: Use %i or %I for arrays of symbols.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-i
+  Enabled: false
+Style/Documentation:
+  Description: Document classes and non-namespace modules.
+  Enabled: false
+Style/DoubleNegation:
+  Description: Checks for uses of double negation (!!).
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-bang-bang
+  Enabled: false
+Style/EmptyLiteral:
+  Description: Prefer literals to Array.new/Hash.new/String.new.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#literal-array-hash
+  Enabled: false
+Style/ModuleFunction:
+  Description: Checks for usage of `extend self` in modules.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#module-function
+  Enabled: false
+Style/OneLineConditional:
+  Description: Favor the ternary operator(?:) over if/then/else/end constructs.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#ternary-operator
+  Enabled: false
+Style/OpMethod:
+  Description: When defining binary operators, name the argument other.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#other-arg
+  Enabled: false
+Style/PerlBackrefs:
+  Description: Avoid Perl-style regex back references.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-perl-regexp-last-matchers
+  Enabled: false
+Style/Proc:
+  Description: Use proc instead of Proc.new.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#proc
+  Enabled: false
+Style/SelfAssignment:
+  Description: Checks for places where self-assignment shorthand should have been
+    used.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#self-assignment
+  Enabled: false
