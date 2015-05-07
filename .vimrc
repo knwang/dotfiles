@@ -45,7 +45,7 @@ Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-run-interactive'
 Bundle 'pbrisbin/vim-mkdir'
 Bundle 'vim-scripts/ctags.vim'
-Bundle 'vim/rubocop'
+Bundle 'ngmy/vim-rubocop'
 
 syntax on
 filetype plugin indent on
