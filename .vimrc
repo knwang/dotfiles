@@ -45,6 +45,7 @@ Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-run-interactive'
 Bundle 'pbrisbin/vim-mkdir'
 Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim/rubocop'
 
 syntax on
 filetype plugin indent on
@@ -137,16 +138,6 @@ call extend(g:rails_gem_projections, {
       \ "rspec": {
       \    "spec/support/*.rb": {
       \      "command": "support"}},
-      \ "cucumber": {
-      \   "features/*.feature": {
-      \     "command": "feature",
-      \     "template": "Feature: %h"},
-      \   "features/support/*.rb": {
-      \     "command": "support"},
-      \   "features/support/env.rb": {
-      \     "command": "support"},
-      \   "features/step_definitions/*_steps.rb": {
-      \     "command": "steps"}},
       \ "carrierwave": {
       \   "app/uploaders/*_uploader.rb": {
       \     "command": "uploader",
@@ -164,18 +155,6 @@ call extend(g:rails_gem_projections, {
       \     "test": "spec/models/%s_spec.rb",
       \     "template": "Fabricator :%s do\nend",
       \     "affinity": "model"}},
-      \ "factory_girl": {
-      \   "spec/factories/*_factory.rb": {
-      \     "command": "factory",
-      \     "alternate": "app/models/%s.rb",
-      \     "related": "db/schema.rb#%p",
-      \     "test": "spec/models/%s_spec.rb",
-      \     "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend",
-      \     "affinity": "model"},
-      \   "spec/factories.rb": {
-      \      "command": "factory"},
-      \   "test/factories.rb": {
-      \      "command": "factory"}}
       \ }, 'keep')
 
 " Enable TAB indent and SHIFT-TAB unindent
