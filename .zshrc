@@ -36,11 +36,11 @@ alias ll='ls -l'
 
 alias r='rails'
 alias rs='bin/rspec'
+alias dp='gp && rake deploy:production'
 alias g='git'
 alias h='heroku'
 alias hc='heroku run console -a'
 alias hlog='heroku logs -t -a'
-alias m='middleman'
 
 mux() {
   if [ ! -z $1 ]
@@ -56,10 +56,11 @@ mux() {
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 export BUNDLER_EDITOR="vim"
 eval "$(rbenv init -)"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 function title {
   if [[ "$DISABLE_AUTO_TITLE" == "true" ]] || [[ "$EMACS" == *term* ]]; then
